@@ -1,0 +1,26 @@
+#!/bin/sh
+
+TIME=$1
+if [ -z $TIME ]; then
+	echo "You should specify time"
+	exit
+fi
+PATTERN="[0-9]\{1,2}:[0-9]\{2}"
+RESULT=`(echo "$TIME" | grep '[0-9]\{1,2\}:[0-9]\{2\}')`
+if [ -z $RESULT ]; then
+	echo "Format should be HH:MM"
+	exit
+fi
+NOW=`date +%s`
+TARGET=`date --date="$RESULT" +%s`
+DATE=`date --date="$RESULT" +"%T"`
+DIFF=`expr $TARGET - $NOW`
+if [ $DIFF -lt 0 ]; then
+	TARGET=`date --date="tomorrow "$RESULT"" +%s`
+	DATE=`date --date="tomorrow "$RESULT"" +"%D %T"`
+	DIFF=`expr $TARGET - $NOW`
+fi
+echo Alarm set to $DATE
+sleep $DIFF
+./incVolume &
+cvlc ../Alarm/eye_of_the_tiger.mp3

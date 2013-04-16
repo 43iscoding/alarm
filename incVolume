@@ -1,0 +1,12 @@
+#!/bin/sh
+
+RESULT=`./volume 0`
+VOLUME=`./volume`
+sleep 3
+while [ `expr "$VOLUME" : '\(^[0-9]*\)'` -lt 100 ]
+do
+	RESULT=`./volume +2`
+	sleep 1
+	VOLUME=`./volume`
+done
+echo done

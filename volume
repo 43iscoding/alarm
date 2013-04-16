@@ -1,0 +1,28 @@
+#!/bin/sh
+
+VALUE=$1
+if [ -z $VALUE ]; then
+	echo `amixer sget Master | grep -o [0-9]*%`
+	exit
+fi
+OLD=`amixer sget Master | grep -o [0-9]*%`
+INC=`echo $VALUE | grep '^+[0-9][0-9]*'`
+
+if [ ! -z $INC ]; then
+	VOLUME=`expr substr "$INC" 2 3`
+	amixer -q sset Master $VOLUME%+
+fi
+
+DEC=`echo $VALUE | grep '^-[0-9][0-9]*'`
+if [ ! -z $DEC ]; then
+	VOLUME=`expr substr "$DEC" 2 3`
+	amixer -q sset Master $VOLUME%-
+fi
+
+SET=`echo $VALUE | grep '^[0-9][0-9]*'`
+if [ ! -z $SET ]; then
+	amixer -q sset Master $SET%
+fi
+
+NEW=`amixer sget Master | grep -o [0-9]*%`
+echo volume: $OLD '-->' $NEW
