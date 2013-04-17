@@ -11,6 +11,17 @@ if [ -z $RESULT ]; then
 	echo "Format should be HH:MM"
 	exit
 fi
+DIR="Ringtones"
+RINGTONE=`/bin/ls -1 "$DIR" | sort --random-sort | head -1`
+if [ -z $RINGTONE ]; then
+	echo "No ringtones found. Add some to Ringtones/ folder"
+	exit
+fi
+FULL_PATH=$DIR/$RINGTONE
+if [ ! -s "$FULL_PATH" ]; then
+	echo File $FULLPATH not found
+	exit
+fi
 NOW=`date +%s`
 TARGET=`date --date="$RESULT" +%s`
 DATE=`date --date="$RESULT" +"%T"`
@@ -23,4 +34,4 @@ fi
 echo Alarm set to $DATE
 sleep $DIFF
 ./incVolume &
-cvlc Ringtones/truth_be_known.mp3
+cvlc $FULL_PATH
