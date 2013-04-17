@@ -23,4 +23,4 @@ fi
 echo Alarm set to $DATE
 sleep $DIFF
 ./incVolume &
-cvlc ../Alarm/eye_of_the_tiger.mp3
+cvlc Ringtones/truth_be_known.mp3
