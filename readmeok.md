@@ -16,7 +16,7 @@ Setup
     android:windowSoftInputMode="adjustResize"
     android:configChanges="fontScale|keyboard|keyboardHidden|locale|mnc|mcc|navigation|orientation|screenLayout|screenSize|smallestScreenSize|uiMode|touchscreen">
     <intent-filter>
-        <data android:scheme="okauth" android:host="**ok1139363840**" />
+        <data android:scheme="okauth" android:host="INSERT_OK_APPLICATION_ID" />
     </intent-filter>
     <meta-data android:name="android.app.lib_name" android:value="unity" />
     <meta-data android:name="unityplayer.ForwardNativeEventsToDalvik" android:value="true" />
@@ -30,6 +30,8 @@ Setup
     <meta-data android:name="unityplayer.ForwardNativeEventsToDalvik" android:value="true" />
 </activity>
 ```
+where **INSERT_OK_APPLICATION_ID** should be in format: `ok1234567890`
+
 * within **manifest** tag
 ```
 <activity android:name="ru.odnoklassniki.unity.auth.AppAuthorization"/>
