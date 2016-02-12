@@ -1,6 +1,40 @@
 Odnoklassniki Unity SDK
 =============
 
+This SDK allows you to connect your Unity **Android** and **iOS** with Odnoklassniki.
+
+Setup
+-------
+
+1. Fill in application parameters in `OdnoklassnikiSettings.asset`
+2. Add the following entries to your `android.manifest` 
+* within **application** tag
+```
+<activity android:name="ru.odnoklassniki.unity.OKAndroidPlugin"
+    android:label="@string/app_name"
+    android:hardwareAccelerated="true"
+    android:windowSoftInputMode="adjustResize"
+    android:configChanges="fontScale|keyboard|keyboardHidden|locale|mnc|mcc|navigation|orientation|screenLayout|screenSize|smallestScreenSize|uiMode|touchscreen">
+    <intent-filter>
+        <data android:scheme="okauth" android:host="ok1139363840" />
+    </intent-filter>
+    <meta-data android:name="android.app.lib_name" android:value="unity" />
+    <meta-data android:name="unityplayer.ForwardNativeEventsToDalvik" android:value="true" />
+</activity>
+<activity android:name="ru.odnoklassniki.unity.webview.OKWVActivity"
+    android:label="@string/app_name"
+    android:hardwareAccelerated="true"
+    android:windowSoftInputMode="adjustResize"
+    android:configChanges="fontScale|keyboard|keyboardHidden|locale|mnc|mcc|navigation|orientation|screenLayout|screenSize|smallestScreenSize|uiMode|touchscreen">
+    <meta-data android:name="android.app.lib_name" android:value="unity" />
+    <meta-data android:name="unityplayer.ForwardNativeEventsToDalvik" android:value="true" />
+</activity>
+```
+* within **manifest** tag
+```
+<activity android:name="ru.odnoklassniki.unity.auth.AppAuthorization"/>
+```
+
 Initialization
 -------
 ```
