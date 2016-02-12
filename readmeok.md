@@ -8,7 +8,7 @@ Setup
 
 1. Fill in application parameters in `OdnoklassnikiSettings.asset`
 2. Add the following entries to your `android.manifest` 
-* within **<application>** tag
+* within **application** tag
 ```
 <activity android:name="ru.odnoklassniki.unity.OKAndroidPlugin"
     android:label="@string/app_name"
@@ -30,7 +30,7 @@ Setup
     <meta-data android:name="unityplayer.ForwardNativeEventsToDalvik" android:value="true" />
 </activity>
 ```
-* within **<manifest>** tag
+* within **manifest** tag
 ```
 <activity android:name="ru.odnoklassniki.unity.auth.AppAuthorization"/>
 ```
