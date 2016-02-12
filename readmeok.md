@@ -1,14 +1,8 @@
 Odnoklassniki Unity SDK
 =============
 
-
-
-
-
-Workflow
+Initialization
 -------
-
-### 1) Initialization
 ```
 OK.Init(success =>
 {
@@ -18,7 +12,8 @@ OK.Init(success =>
 });
 ```
 
-### 2) Authorization
+Authorization
+-------
 ```
 OK.Auth(success =>
 {
@@ -56,7 +51,8 @@ if (OK.isInitialized && OK.AccessTokenExpiresAt < DateTime.Now) {
 }
 ```
 
-### 3) Using widgets
+Using widgets
+-------
 
 #### Invite Widget
 
